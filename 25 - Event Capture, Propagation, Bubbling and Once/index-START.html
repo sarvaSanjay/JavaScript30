@@ -12,6 +12,7 @@
       </div>
     </div>
   </div>
+  <button></button>
 
 <style>
   html {
@@ -40,9 +41,16 @@
   }
 </style>
 
-<button></button>
+<button class="button"></button>
 <script>
-
+  function logText(e){
+    console.log(this.classList.value);
+    e.stopPropagation()
+  }
+  let divs = document.querySelectorAll('div');
+  divs.forEach(element => (element.addEventListener('click', logText, {capture: false})));
+  let button = document.querySelector('button');
+  button.addEventListener('click', logText, {once: true})
 </script>
 </body>
 </html>
